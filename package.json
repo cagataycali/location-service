@@ -1,0 +1,39 @@
+{
+  "name": "location-service",
+  "version": "1.0.0",
+  "description": "Have your own open source location distance complete solution.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cagataycali/location-service.git"
+  },
+  "keywords": [
+    "location",
+    "service",
+    "location",
+    "service",
+    "paas",
+    "distance",
+    "tick.fun"
+  ],
+  "author": "Çağatay Çalı",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cagataycali/location-service/issues"
+  },
+  "homepage": "https://github.com/cagataycali/location-service#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "colors": "^1.1.2",
+    "express": "^4.15.3",
+    "mysql2": "^1.3.5",
+    "request": "^2.81.0",
+    "sequelize": "^4.2.1",
+    "socket.io": "^2.0.3",
+    "userify": "^1.0.0",
+    "uuid": "^3.1.0"
+  }
+}

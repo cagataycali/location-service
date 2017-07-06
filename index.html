@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+  <link rel="stylesheet" href="build/conversational-form-docs.min.css">
+  <script type="text/javascript" src="build/form.js" crossorigin></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <title>Unlock the Power of Location Based Data</title>
+</head>
+
+<body>
+  <script src="build/conversational-form-examples.min.js" id="examples-script"></script>
+
+  <main class="content cf-toggle">
+    <menu id="small-screen-menu">
+      <h2>Unlock the Power of Location Based Data</h2>
+    </menu>
+
+    <section id="info" role="info">
+      <div class="close-btn" onclick="window.conversationalFormExamples.toggleMenuState()">
+        <svg viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+						<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+							<g transform="translate(-328.000000, -83.000000)" stroke="#FFFFFF" stroke-width="2">
+								<g id="close" transform="translate(329.000000, 84.000000)">
+									<path d="M19.6371966,19.2779351 L1.08132646,0.722064927"></path>
+									<path d="M19.4923318,0.722064927 L0.936461672,19.2779351"></path>
+								</g>
+							</g>
+						</g>
+					</svg>
+      </div>
+
+      <article>
+        <h1 id="writer">
+						Location Service
+				</h1>
+        <h2>
+					You're planning to build a location-based application. You are looking for the best practical solution. If you leave the e-mail, I will send you free API credentials and documentation. Documentation and service are open source. You can be a contributor.
+          <br>
+          <br>
+          <a class="github-button" href="https://github.com/cagataycali/location-service" data-show-count="true" aria-label="Star cagataycali/location-service on GitHub">Star</a>
+          <a class="github-button" href="https://github.com/cagataycali/location-service/fork" data-show-count="true" aria-label="Fork cagataycali/location-service on GitHub">Fork</a>
+				</h2>
+        <i>cagatay.me</i>
+      </article>
+    </section>
+
+    <section role="form">
+      <div class="form-outer">
+
+        <form id="form" autocomplete="off">
+          <fieldset>
+            <label for="name">What's your name?</label>
+            <input required cf-questions="Hi there! What's your name? 😊" type="text" class="form-control" name="name" id="name">
+          </fieldset>
+
+          <fieldset>
+            <label for="occupation">Occupation</label>
+            <div class="radio">
+              <label>
+							<input cf-questions="Great to meet you, {previous-answer}! I'm a web service for your location based app, what do you do?| Awesome, {previous-answer}! And what do you do?" type="radio" name="occupation" id="occupation-1" value="developer">
+							Developer
+						</label>
+            </div>
+            <div class="radio">
+              <label>
+							<input type="radio" name="occupation" id="occupation-2" value="corporate">
+							Corporate
+						</label>
+            </div>
+            <div class="radio">
+              <label>
+							<input type="radio" name="occupation" id="occupation-3" value="student">
+							Student
+						</label>
+            </div>
+            <div class="radio">
+              <label>
+								<input type="radio" name="occupation" id="occupation-2" value="startup">
+								Startup
+							</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <label for="opinion">Will location-based applications make life easier?</label>
+            <select cf-questions="Will location-based applications make life easier?" name="opinion" id="opinion" class="form-control">
+							<option></option>
+							<option>Definitely</option>
+							<option>Maybe</option>
+							<option>No</option>
+						</select>
+          </fieldset>
+
+          <fieldset>
+            <label for="email">Email</label>
+            <input pattern=".+\@.+\..+" cf-error="E-mail not correct" cf-questions="If you want to get free API key and documentation location service, please give me your email." type="email" class="form-control" name="email" id="your-email">
+          </fieldset>
+
+          <fieldset>
+            <label for="thats-all">Are you ready to try?</label>
+            <select cf-questions="Are you ready to try?" name="submit-form" id="submit-form" class="form-control">
+							<option></option>
+							<option>Yup</option>
+						</select>
+          </fieldset>
+
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+
+
+      </div>
+    </section>
+
+    <section id="cf-context" role="cf-context" cf-context>
+
+    </section>
+  </main>
+
+
+  <script>
+    window.onload = () => {
+      var conversationalForm = window.cf.ConversationalForm.startTheConversation({
+        formEl: document.getElementById("form"),
+        context: document.getElementById("cf-context"),
+        submitCallback: () => {
+          let form = $("form").serialize();
+          $.ajax({
+            type: "POST",
+            url: `${window.location.href}create`,
+            data: form,
+            success: res =>  {
+              conversationalForm.addRobotChatResponse(`<strong>There\'s your credentials </strong> 🌈 \n name: ${res.name} \n token: ${res.key}`);
+              conversationalForm.addRobotChatResponse(res.message);
+            }
+          });
+        }
+      });
+    };
+  </script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</body>
+
+</html>
