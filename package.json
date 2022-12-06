@@ -26,9 +26,9 @@
   },
   "homepage": "https://github.com/cagataycali/location-service#readme",
   "dependencies": {
-    "body-parser": "^1.17.2",
+    "body-parser": "^1.19.2",
     "colors": "^1.1.2",
-    "express": "^4.15.3",
+    "express": "^4.17.3",
     "mysql2": "^1.3.5",
     "request": "^2.81.0",
     "sequelize": "^4.2.1",
